@@ -27,6 +27,7 @@ class G4UIcmdWithABool;
 class G4UIcmdWithoutParameter;
 class G4UIcmdWithADoubleAndUnit;
 class G4UIcmdWithAString;
+class G4UIcmdWithAnInteger;
 
 class GatePhaseSpaceActor;
 
@@ -72,6 +73,7 @@ protected:
   G4UIcmdWithABool* bEnablePDGCodeCmd;
   G4UIcmdWithABool* bEnableCompactCmd;
   
+  G4UIcmdWithAnInteger* bSetInitialRunID;
 
 };
 

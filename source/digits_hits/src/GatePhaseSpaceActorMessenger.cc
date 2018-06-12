@@ -59,6 +59,8 @@ GatePhaseSpaceActorMessenger::~GatePhaseSpaceActorMessenger()
   delete bEnableCompactCmd;
   delete bEnableEmissionPointCmd;
   delete bEnablePDGCodeCmd;
+
+  delete bSetInitialRunID;
 }
 //-----------------------------------------------------------------------------
 
@@ -232,6 +234,10 @@ void GatePhaseSpaceActorMessenger::BuildCommands(G4String base)
   guidance = "Output the PDGCode instead of the ParticleName.";
   bEnablePDGCodeCmd->SetGuidance(guidance);
 
+  bb = base+"/setInitialRunID";
+  bSetInitialRunID = new G4UIcmdWithAnInteger(bb, this);
+  guidance = "Set the initial runID";
+  bSetInitialRunID->SetGuidance(guidance);
 
 }
 //-----------------------------------------------------------------------------
@@ -271,6 +277,8 @@ void GatePhaseSpaceActorMessenger::SetNewValue(G4UIcommand* command, G4String pa
   if(command == bSpotIDFromSourceCmd) {pActor->SetSpotIDFromSource(param);pActor->SetIsSpotIDEnabled();};
   if(command == bEnablePDGCodeCmd) pActor->SetEnablePDGCode(bEnablePDGCodeCmd->GetNewBoolValue(param));
   if(command == bEnableCompactCmd) pActor->SetEnabledCompact(bEnableCompactCmd->GetNewBoolValue(param));
+
+  if(command == bSetInitialRunID) pActor->SetInitialRunID(bSetInitialRunID->GetNewIntValue(param));
 
   GateActorMessenger::SetNewValue(command ,param );
 }
