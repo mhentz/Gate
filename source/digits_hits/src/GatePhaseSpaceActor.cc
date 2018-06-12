@@ -80,6 +80,9 @@ GatePhaseSpaceActor::GatePhaseSpaceActor(G4String name, G4int depth):
   pIAEARecordType = 0;
   pIAEAheader = 0;
   mFileSize = 0;
+
+  mRunidOffset = 0;
+
   GateDebugMessageDec("Actor", 4, "GatePhaseSpaceActor() -- end\n");
 
   emcalc = new G4EmCalculator;
@@ -486,6 +489,7 @@ void GatePhaseSpaceActor::UserSteppingAction(const GateVVolume *, const G4Step *
 
   if (mFileType == "rootFile") {
     if (GetMaxFileSize() != 0) pListeVar->SetMaxTreeSize(GetMaxFileSize());
+    runid += mRunidOffset;
     pListeVar->Fill();
   }
   else if (mFileType == "IAEAFile") {
