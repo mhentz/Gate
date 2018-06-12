@@ -97,6 +97,8 @@ class GatePhaseSpaceActor : public GateVActor
   void SetEnabledCompact(bool b){bEnableCompact = b;}
   void SetEnablePDGCode(bool b){bEnablePDGCode = b;}
 
+  void SetInitialRunID(int offset) { mRunidOffset = offset; }
+
 protected:
   GatePhaseSpaceActor(G4String name, G4int depth=0);
 
@@ -177,6 +179,7 @@ protected:
   int eventid;
   int runid;
  
+  int mRunidOffset;
 
   G4EmCalculator * emcalc;
   GatePhaseSpaceActorMessenger* pMessenger;
