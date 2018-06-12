@@ -100,6 +100,8 @@ public:
   void SetSphereProjectionCenter(G4ThreeVector c) { mSphereProjectionCenter = c; }
   void SetSphereProjectionRadius(double r) { mSphereProjectionRadius = r; }
 
+  void SetInitialRunID(int offset) { mRunidOffset = offset; }
+
 protected:
   GatePhaseSpaceActor(G4String name, G4int depth=0);
 
@@ -184,6 +186,7 @@ protected:
   int eventid;
   int runid;
 
+  int mRunidOffset;
 
   G4EmCalculator * emcalc;
   GatePhaseSpaceActorMessenger* pMessenger;
