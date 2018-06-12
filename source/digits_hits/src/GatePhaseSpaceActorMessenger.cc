@@ -61,6 +61,8 @@ GatePhaseSpaceActorMessenger::~GatePhaseSpaceActorMessenger()
   delete bEnableSphereProjection;
   delete bSetSphereProjectionCenter;
   delete bSetSphereProjectionRadius;
+
+  delete bSetInitialRunID;
 }
 //-----------------------------------------------------------------------------
 
@@ -246,6 +248,11 @@ void GatePhaseSpaceActorMessenger::BuildCommands(G4String base)
   bSetSphereProjectionRadius = new G4UIcmdWithADoubleAndUnit(bb, this);
   guidance = "Set the radius of the sphere where the points are projected";
   bSetSphereProjectionRadius->SetGuidance(guidance);
+
+  bb = base+"/setInitialRunID";
+  bSetInitialRunID = new G4UIcmdWithAnInteger(bb, this);
+  guidance = "Set the initial runID";
+  bSetInitialRunID->SetGuidance(guidance);
 }
 //-----------------------------------------------------------------------------
 
@@ -286,6 +293,8 @@ void GatePhaseSpaceActorMessenger::SetNewValue(G4UIcommand* command, G4String pa
   if(command == bEnableSphereProjection) pActor->SetEnabledSphereProjection(bEnableSphereProjection->GetNewBoolValue(param));
   if(command == bSetSphereProjectionCenter) pActor->SetSphereProjectionCenter(bSetSphereProjectionCenter->GetNew3VectorValue(param));
   if(command == bSetSphereProjectionRadius) pActor->SetSphereProjectionRadius(bSetSphereProjectionRadius->GetNewDoubleValue(param));
+
+  if(command == bSetInitialRunID) pActor->SetInitialRunID(bSetInitialRunID->GetNewIntValue(param));
 
   GateActorMessenger::SetNewValue(command ,param );
 }

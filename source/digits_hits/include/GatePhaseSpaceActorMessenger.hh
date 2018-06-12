@@ -29,6 +29,7 @@ class G4UIcmdWithoutParameter;
 class G4UIcmdWithADoubleAndUnit;
 class G4UIcmdWithAString;
 class G4UIcmdWith3VectorAndUnit;
+class G4UIcmdWithAnInteger;
 class GatePhaseSpaceActor;
 
 class GatePhaseSpaceActorMessenger : public  GateActorMessenger
@@ -74,6 +75,8 @@ protected:
   G4UIcmdWithABool* bEnableSphereProjection;
   G4UIcmdWith3VectorAndUnit* bSetSphereProjectionCenter;
   G4UIcmdWithADoubleAndUnit* bSetSphereProjectionRadius;
+
+  G4UIcmdWithAnInteger* bSetInitialRunID;
 
 };
 
